@@ -5,7 +5,7 @@ import Buttons from './Buttons.js';
 import Image from './Image.js';
 export default function App() {
   return (
-    <div>
+    <div className="App">
       <Header />
       <Buttons />
       <Image />

@@ -49,11 +49,15 @@ input {
 }
 .Input-1,
 .Input-2 {
+  box-sizing: border-box;
+  border: 2px solid #d5d4d8;
+  border-radius: 4px;
+  resize: none;
   flex-grow: 1;
-  margin: 0 1rem;
+  margin: 0 0.5rem;
 }
 .SubmitButton {
-  margin: 0.8rem 1rem;
+  margin: 0.8rem 0.5rem;
   background: rgb(96, 36, 164);
   background: linear-gradient(
     90deg,
@@ -64,4 +68,14 @@ input {
   letter-spacing: -1px;
   color: white;
   font-size: 0.9rem;
+}
+.App {
+  display: flex;
+  flex-direction: column;
+}
+.ImageContainer {
+  align-self: center;
+  }
+.Image{
+  width: 40.5rem;
 }

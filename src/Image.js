@@ -3,10 +3,8 @@ var url = '';
 
 export default function Image(props) {
   return (
-    <div>
-      <div className="ImageContainer">
-        <img src="" alt="meme" className="Image" />
-      </div>
+    <div className="ImageContainer">
+      <img src={url} alt="meme" className="Image" />
     </div>
   );
 }
