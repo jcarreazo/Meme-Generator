@@ -11,7 +11,7 @@ export default function Buttons(props) {
         <input
           type="submit"
           className="SubmitButton"
-          value="Get a new meme image"
+          value="Get a new meme image 🖼️"
         />
       </div>
     </div>
