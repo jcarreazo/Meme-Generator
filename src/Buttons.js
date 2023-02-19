@@ -1,24 +1,25 @@
 import React from 'react';
-var url = '';
-let array = '';
+let array = [
+  {
+    number: 0,
+    url: 'https://www.developerway.com/_next/image?url=%2F_next%2Fstatic%2Fmedia%2Fyt_logo_rgb_dark.81490556.png&w=128&q=75',
+  },
+];
 export default function Buttons(props) {
+  const [content, setContent] = React.useState(
+    'https://i.imgflip.com/1bgw.jpg'
+  );
   async function fetchingSteam() {
     const response = await fetch('https://api.imgflip.com/get_memes');
     const movies = await response.json();
     return movies;
   }
-
   async function handle() {
-    fetchingSteam().then((movies) => {
+    await fetchingSteam().then((movies) => {
       array = movies.data.memes;
     });
-    fetchingSteam().then((movies) => {
-      array = movies.data.memes;
-    });
-
     const random = Math.floor(Math.random() * array.length);
-    url = array[random].url;
-    console.log(url);
+    await setContent(array[random].url);
   }
   return (
     <div className="App">
@@ -32,7 +33,7 @@ export default function Buttons(props) {
         </button>
       </div>
       <div className="ImageContainer">
-        <img src={url} alt="meme" className="Image" />
+        <img src={content} alt="meme" className="Image" />
       </div>
     </div>
   );
