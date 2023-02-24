@@ -6,6 +6,8 @@ let array = [
   },
 ];
 export default function Buttons(props) {
+  const [text1, setText1] = React.useState('topText');
+  const [text2, setText2] = React.useState('bottomText');
   const [content, setContent] = React.useState(
     'https://i.imgflip.com/1bgw.jpg'
   );
@@ -32,8 +34,10 @@ export default function Buttons(props) {
           "Get a new meme image 🖼️"
         </button>
       </div>
-      <div className="ImageContainer">
+      <div style={{ backgroundImage: content }} className="ImageContainer">
+        <p className="content-1">{text1}</p>
         <img src={content} alt="meme" className="Image" />
+        <p className="content-2">{text2}</p>
       </div>
     </div>
   );
