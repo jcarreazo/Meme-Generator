@@ -6,11 +6,11 @@ let array = [
   },
 ];
 export default function Buttons(props) {
-  const [text1, setText1] = React.useState('topText');
-  const [text2, setText2] = React.useState('bottomText');
-  const [content, setContent] = React.useState(
-    'https://i.imgflip.com/1bgw.jpg'
-  );
+  const [content, setContent] = React.useState({
+    topText: '',
+    bottomText: '',
+    randomImage: 'https://i.imgflip.com/1bgw.jpg',
+  });
   async function fetchingSteam() {
     const response = await fetch('https://api.imgflip.com/get_memes');
     const movies = await response.json();
@@ -21,7 +21,12 @@ export default function Buttons(props) {
       array = movies.data.memes;
     });
     const random = Math.floor(Math.random() * array.length);
-    await setContent(array[random].url);
+    await setContent((prevArray) => {
+      return {
+        ...prevArray,
+        randomImage: array[random].url,
+      };
+    });
   }
   return (
     <div className="App">
@@ -35,9 +40,9 @@ export default function Buttons(props) {
         </button>
       </div>
       <div style={{ backgroundImage: content }} className="ImageContainer">
-        <p className="content-1">{text1}</p>
-        <img src={content} alt="meme" className="Image" />
-        <p className="content-2">{text2}</p>
+        <p className="content-1">{setContent.topText}</p>
+        <img src={content.randomImage} alt="meme" className="Image" />
+        <p className="content-2">{setContent.bottomText}</p>
       </div>
     </div>
   );
